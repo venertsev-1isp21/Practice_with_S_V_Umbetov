@@ -6,14 +6,13 @@
   <link rel='stylesheet' href='styles/style.css'>
 </head>
 <body>
-  <script src='scripts/script.js'></script>
-  <h1>ROT13 шифр (чётное - шифруем, нечётное - расшифровываем)</h1>
-  <h1>Введите вариант (число): <input type="number" id="variant"></h1>
+  <h1>ROT13 шифр</h1>
   <div class="container">
-    <input class='textarea' id="inputText" placeholder="Введите текст здесь...">
-    <input class='textarea' id="outputText" placeholder="Результат шифрования/дешифровки" readonly>
+    <textarea class='textarea' id="inputText" placeholder="Введите текст здесь..."></textarea>
+    <textarea class='textarea' id="outputText" placeholder="Результат шифрования/дешифровки" readonly></textarea>
   </div>
-  <button class="button" id="button"></button>
+  <button class="button" id="button">Шифровать</button>
   <div id="debug"></div>
+  <script src='scripts/script.js'></script>
 </body>
 </html>

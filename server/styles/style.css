@@ -12,7 +12,6 @@ body {
 }
 h1 {
   text-align: center;
-  padding-bottom: 20px;
 }
 .container {
   display: flex;
@@ -37,6 +36,6 @@ h1 {
 }
 .button{
 	width: 100px;
-	height: 30px;
+	height: 20px;
 	margin-top: 20px;
 }
