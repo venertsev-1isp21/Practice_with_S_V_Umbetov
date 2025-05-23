@@ -1,26 +1,29 @@
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
+let http = require('http');
+let fs = require('fs');
+let path = require('path');
 
-function onRequest(request, response) {
-    if (request.url === '/' || request.url === '/index.html' || request.url === '/scripts/script.js' || request.url === '/styles/style.css') {
-        fs.readFile('index.html', function(err, data) {
-            if (err) {
-                response.writeHead(500, { 'Content-Type': 'text/plain' });
-                response.end('Ошибка сервера');
-            } else {
-                response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-                response.write(data);
-                response.end();
-            }
-        });
-    } else {
-        response.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-        response.write('<h1>404 - Страница не найдена</h1>');
-        response.end();
-    }
+function onRequest(req, res) {
+    let file_path = '.' + (req.url === '/' ? '/index.html' : req.url);
+    
+    file_path = path.normalize(file_path);
+
+    let ext = path.extname(file_path);
+    let content_type = {
+        '.html': 'text/html; charset=utf-8',
+        '.css': 'text/css',
+        '.js': 'application/javascript'
+    }[ext] || 'text/plain';
+
+    fs.readFile(file_path, function (err, data) {
+        if (err) {
+            res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+            res.end('404 Not Found');
+        } else {
+            res.writeHead(200, { 'Content-Type': content_type });
+            res.end(data);
+        }
+    });
 }
 
-var server = http.createServer(onRequest);
+let server = http.createServer(onRequest);
 server.listen(3000, '0.0.0.0');
-console.log('Сервер запущен на http://localhost:3000');
