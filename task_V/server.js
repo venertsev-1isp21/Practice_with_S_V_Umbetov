@@ -32,4 +32,4 @@ function onRequest(req, res) {
 }
 
 http.createServer(onRequest).listen(3000, '0.0.0.0');
-console.log('Server started');
+console.log('Server started. Port:3000');
