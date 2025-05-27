@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head lang = "en">
+    <link rel="stylesheet" href="./public/style.css">
+    <title>JSON reader</title>
+</head>
+<body>
+    <script src="./public/script.js"></script>
+    <div class="products" id="products"><p id="text"></p></div>
+    <div class="pagination" style="margin-top: 20px; text-align: center;">
+        <button id="prevBtn">Назад</button>
+        <span id="pageNum">1</span>
+        <button id="nextBtn">Вперёд</button>
+    </div>
+    <div class="container">
+        <button id="button" onclick="get_product()">GET ALL</button><br>
+        <input id="input" placeholder="Enter number of product">
+        <button id="button2" onclick="get_product_pcs()">GET</button>
+    </div>
+</body>

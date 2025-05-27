@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.product{
+    flex: 0 0 auto;
+    background-color: rgb(255, 255, 255);
+    text-align: start;
+    border-radius: 20px;
+    border: 1px ;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 5px 10px 14px -5px;
+    border: 1px solid black;
+}
+.products{
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+}
+.img_prod{
+    width: 100px;
+    height: 100px;
+}
+.container{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input{
+    width: 200px;
+    height: 20px;
+}
+button{
+    width: 210px;
+    height: 30px;
+    background-color: rgb(54, 54, 54);
+    border-radius: 5px;
+    color: aliceblue;
+}
+#button2{
+    margin-top: 20px;
+}

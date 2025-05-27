@@ -1,0 +1,11 @@
+let http = require('http');
+
+function onRequest(req, res) {
+	fetch('https://dummyjson.com/products')
+	.then(res => res.json())
+	.then(console.log);
+}
+
+let server = http.createServer(onRequest);
+server.listen(3000, '0.0.0.0');
+console.log('server starter')
