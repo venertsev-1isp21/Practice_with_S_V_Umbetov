@@ -1,23 +1,170 @@
-body{
+.montserrat-1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Исправлено */
+    font-style: normal;
+}
+
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
 }
-.product{
+
+.products {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.head_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 60px;
+    background-color: rgb(173, 228, 101);
+    margin-bottom: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(92, 133, 40, 0.3);
+}
+
+.back_butt {
+    width: 100px;
+    height: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 4px 4px 8px 0px rgba(92, 133, 40, 0.3);
+    background-color: rgb(148, 212, 64);
+    font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    background-color: rgb(255, 255, 255);
-    text-align: start;
-    border-radius: 20px;
-    border: 1px ;
-    padding: 20px;
-    width: 400px;
-    box-shadow: 5px 10px 14px -5px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    cursor: pointer;
 }
-.img_prod{
-    width: 300px;
-    height: 300px;
+
+.back_butt:hover {
+    background-color: rgb(199, 238, 148);
+}
+
+.id_text,
+.rating_text {
+    font-size: 20px;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.right_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 10%;
+}
+
+.price_text {
+    font-size: 50px;
+    text-shadow: 4px 4px 8px 0px black;
+}
+
+.brand_text,
+.category_text {
+    font-size: 30px;
+}
+
+.img_prod {
+    width: 700px;
+    height: 700px;
+    background-color: rgb(233, 233, 233);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.3);
+}
+
+.descr {
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+    margin: 20px 0;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.3);
+}
+
+.descr_text {
+    margin-left: 30px;
+    margin-right: 15px;
+    text-align: justify;
+}
+
+/* Адаптив для смартфонов */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .products {
+        width: 100%;
+    }
+
+    .head_box {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .back_butt {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        width: 80%;
+        font-size: 20px;
+    }
+    .name_text{
+        font-size: 25px;
+        margin-top: 5px;
+    }
+    .id_text,
+    .rating_text {
+        font-size: 15px;
+        margin-top: 0;
+    }
+    .product {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .right_box {
+        margin-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .img_prod {
+        width: 90%;
+        height: auto;
+        max-width: 400px;
+    }
+
+    .price_text {
+        font-size: 30px;
+    }
+
+    .brand_text,
+    .category_text {
+        font-size: 22px;
+    }
+
+    .descr_text {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 }

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <head lang = "en">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/style.css">
     <title>JSON reader</title>
 </head>
 <body>
+    <div class="header">
+        <h4>JSON product's reader</h4>
+        <div class="search">
+            <input id="input" placeholder="Enter number of product">
+            <button id="button2" class="butt" onclick="get_product_pcs()">Search</button>
+        </div>
+    </div>
+    <div class="products" id="products"></div>
+    <button id="button" class="butt" onclick="get_product()">GET ALL</button><br>
     <script src="./public/script.js"></script>
-    <div class="products" id="products"><p id="text"></p></div>
-    <div class="pagination" style="margin-top: 20px; text-align: center;">
-        <button id="prevBtn">Назад</button>
-        <span id="pageNum">1</span>
-        <button id="nextBtn">Вперёд</button>
-    </div>
-    <div class="container">
-        <button id="button" onclick="get_product()">GET ALL</button><br>
-        <input id="input" placeholder="Enter number of product">
-        <button id="button2" onclick="get_product_pcs()">GET</button>
-    </div>
 </body>

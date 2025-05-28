@@ -1,69 +1,33 @@
-let productsData = [];
-let currentPage = 1;
-const itemsPerPage = 6;
+function get_product(){
+    let output = document.getElementById('products');
+    let prod = fetch('./products.json')
+    .then((response) => {
+        return response.json()
+    })
+    .then(data => {
+        for (let i = 0; i < 30; i++){
+            let title = data.products[i].title;
+            let id = data.products[i].id;
+            let price = data.products[i].price;
+            let img = data.products[i].images[0];
 
-function get_product() {
-    const container = document.getElementById("products");
-    const pageNum = document.getElementById("pageNum");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
+            output.innerHTML += `
+                    <div class='prod_cart'>
+                        <div class='head_box'>
+                            <p class='name_text'><b>${title}</b></p>
+                        </div>
 
-    container.innerHTML = "";
-
-    if (productsData.length > 0) {
-        renderPage(currentPage);
-        return;
-    }
-
-    fetch('./products.json')
-        .then(response => response.json())
-        .then(data => {
-            productsData = data.products;
-            renderPage(currentPage);
-        })
-
-    function renderPage(page) {
-        container.innerHTML = "";
-        const start = (page - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const pageItems = productsData.slice(start, end);
-
-        pageItems.forEach(product => {
-            let img = Array.isArray(product.images) ? product.images[0] : product.images;
-
-            const div = document.createElement("div");
-            div.className = "product";
-            div.style = "border:1px solid #ccc; padding:10px; margin:10px; width:200px;";
-            div.innerHTML = `
-                <strong>${product.title}</strong><br>
-                Id: ${product.id}<br>
-                Category: ${product.category}<br>
-                Price: $${product.price}<br>
-                <img src="${img}" alt="${product.title}" style="width:100%; height:auto;">
-            `;
-            container.appendChild(div);
-        });
-
-        pageNum.textContent = page;
-        prevBtn.disabled = page === 1;
-        nextBtn.disabled = end >= productsData.length;
-    }
-
-    prevBtn.onclick = () => {
-        if (currentPage > 1) {
-            currentPage--;
-            renderPage(currentPage);
+                        <div class='product'>
+                            <img class='img_prod' src='${img}'>
+                            <div class='right_box'>
+                                <p class='price_text'><i>$${price}</i></p>
+                                <p class='id_text'><b>Id:</b> <small>${id}</small></p>
+                            </div>
+                        </div>
+                    </div>`
         }
-    };
-
-    nextBtn.onclick = () => {
-        if ((currentPage * itemsPerPage) < productsData.length) {
-            currentPage++;
-            renderPage(currentPage);
-        }
-    };
+    });
 }
-
 
 function get_product_pcs(){
     let input = document.getElementById('input')
@@ -71,3 +35,44 @@ function get_product_pcs(){
     let newUrl = `/public/product_page/product_page.html?data=${encodeURIComponent(i)}`;
     window.location.href = newUrl;
 }
+
+const scroll_container = document.getElementById('products');
+
+let scroll_speed = 10;
+let scroll_direction = 10;
+let isMouseOver = false;
+let isTouching = false;
+
+// Автоскролл
+function autoScroll() {
+  if (!isMouseOver && !isTouching) {
+    scroll_container.scrollLeft += scroll_speed;
+
+    if (scroll_container.scrollLeft + scroll_container.clientWidth >= scroll_container.scrollWidth) {
+      scroll_container.scrollLeft = 0;
+    }
+  }
+}
+
+setInterval(autoScroll, 30);
+
+scroll_container.addEventListener('mouseenter', () => {
+  isMouseOver = true;
+});
+scroll_container.addEventListener('mouseleave', () => {
+  isMouseOver = false;
+});
+
+scroll_container.addEventListener('touchstart', () => {
+  isTouching = true;
+});
+scroll_container.addEventListener('touchend', () => {
+  isTouching = false;
+});
+
+scroll_container.addEventListener('mousedown', () => {
+  isTouching = true;
+});
+scroll_container.addEventListener('mouseup', () => {
+  isTouching = false;
+});
